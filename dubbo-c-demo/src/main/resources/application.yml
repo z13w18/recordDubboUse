@@ -1,0 +1,30 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: dubbo-demo-c
+
+dubbo:
+  application:    #应用配置，用于配置当前应用信息，不管该应用是提供者还是消费者。
+    name: dubbo-demo-c
+  registry:            #注册中心配置，用于配置连接注册中心相关信息。
+    address: zookeeper://192.168.31.200:2181
+  metadata-report:
+    address: zookeeper://192.168.31.200:2181
+  protocol:     #协议配置，用于配置提供服务的协议信息，协议由提供方指定，消费方被动接受。
+    name: dubbo
+    port: 20881 #端口不能重复
+  #  version: 1.0.0
+  scan:
+    base-packages: com.my.service  #服务暴露与发现消费所在的package
+  consumer:
+    loadbalance: roundrobin
+    version: 1.0.0
+#  provider:
+#    loadbalance: roundrobin
+#    version: 1.0.0
+
+
+
+
